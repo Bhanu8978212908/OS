@@ -1,0 +1,30 @@
+// loading init program from disk of block 7,8 to memory page 65,66
+loadi(65,7);
+loadi(66,8);
+
+// loading interrupt handler(INT 10) from disk of block 35,36 to memory page 22,23
+loadi(22,35);
+loadi(23,36);
+
+// loading exception handler from disk of block 15,16 to memory page 2,3
+loadi(2,15);
+loadi(3,16);
+
+// setting PTBR to starting address of the page table of INIT
+PTBR=PAGE_TABLE_BASE;
+
+// setting PTLR to length 3 (2 for storing code of user program and 1 for stack)
+PTLR=3;
+
+
+// initializing page table
+[PTBR+0]=65;
+[PTBR+1]="0100"; // READ ONLY
+[PTBR+2]=66;
+[PTBR+3]="0100";
+[PTBR+4]=76;
+[PTBR+5]="0110";
+
+[76*512]=0; // IP WHEN INIT PROGRAM STARTS
+SP=2*512;
+ireturn;

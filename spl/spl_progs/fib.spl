@@ -1,0 +1,15 @@
+alias first R0;
+alias second R1;
+first =1;
+second=1;
+alias counter R2;
+counter =1;
+alias temp R3;
+while(counter<=10) do
+	print first;
+	breakpoint;
+	temp=first;
+	first=second;
+	second=first+temp;
+	counter=counter+1;
+endwhile;

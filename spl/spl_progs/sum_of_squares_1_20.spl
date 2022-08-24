@@ -1,0 +1,10 @@
+alias counter R0;
+counter=1;
+alias result R1;
+result=0;
+while(counter<=20) do
+	result=result+(counter*counter);
+	counter=counter+1;
+	print result;
+endwhile;
+
